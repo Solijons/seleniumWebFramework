@@ -20,13 +20,13 @@ public class ActivityCreationTest {
 
     @Test
     public void testUntitledTestCase() throws Exception {
-        driver.get("https://test.amp.monsanto.com/as/authorization.oauth2?response_type=code&client_id=BREEDING-IT-TPD-HAWAII-TRACTIVITY-UI&redirect_uri=https%3A%2F%2Ftractivity.breeding-np.ag%2Freceive-auth-token&state=aHR0cHM6Ly90cmFjdGl2aXR5LmJyZWVkaW5nLW5wLmFnLw%3D%3D&scope=openid%20profile%20fedHUB");
+        driver.get("URL");
         driver.findElement(By.id("username")).click();
         driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("gkqrl");
+        driver.findElement(By.id("username")).sendKeys("username");
         driver.findElement(By.id("password")).click();
         driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("Betterblock_123");
+        driver.findElement(By.id("password")).sendKeys("passowrd");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         driver.findElement(By.id("ok")).click();
         driver.findElement(By.xpath("//div[@id='scrollable-auto-tabpanel-0']/div/div[2]/div/div/div/div/div[3]/div[2]/div/div/div/div/div/span/span[2]")).click();
