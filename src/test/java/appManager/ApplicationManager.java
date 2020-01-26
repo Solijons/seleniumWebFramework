@@ -1,23 +1,23 @@
+package appManager;
+
 import model.ActivityData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
-public class TestBase {
+public class ApplicationManager {
+
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     private String UI_URL;
 
-    @BeforeClass(alwaysRun = true)
-    public void setUp() throws Exception {
+    protected void init() {
         System.setProperty("webdriver.chrome.driver", "src/chromedriver");
         driver = new ChromeDriver();
 
@@ -38,19 +38,19 @@ public class TestBase {
         driver.findElement(By.xpath("//button[@type='submit']")).click();
     }
 
-    protected void goBackToHome() {
+    public void goBackToHome() {
         driver.findElement(By.linkText("Back to Dashboard")).click();
     }
 
-    protected void closeModal() {
+    public void closeModal() {
         driver.findElement(By.id("ok")).click();
     }
 
-    protected void submitActivityCreation() {
+    public void submitActivityCreation() {
         driver.findElement(By.id("1579842872011")).click();
     }
 
-    protected void fillActivityForm(ActivityData activityData) {
+    public void fillActivityForm(ActivityData activityData) {
         driver.findElement(By.id("date")).click();
         driver.findElement(By.id("date")).clear();
         driver.findElement(By.id("date")).sendKeys(activityData.getDate());
@@ -62,23 +62,22 @@ public class TestBase {
         driver.findElement(By.xpath("(//input[@name='continuing'])[2]")).click();
     }
 
-    protected void selectActivityType() {
+    public void selectActivityType() {
         driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
         driver.findElement(By.cssSelector("button.MuiButtonBase-root.MuiFab-root.MuiFab-primary.MuiFab-sizeSmall > span.MuiFab-label > svg.MuiSvgIcon-root")).click();
     }
 
-    protected void goToAddActivityPage() {
+    public void goToAddActivityPage() {
         driver.findElement(By.id("ok")).click();
         driver.findElement(By.xpath("//div[@id='scrollable-auto-tabpanel-0']/div/div[2]/div/div/div/div/div[3]/div[2]/div/div/div/div/div/span/span[2]")).click();
         driver.navigate().to(UI_URL);
     }
 
-    protected void goToViewActivityPage() {
+    public void goToViewActivityPage() {
         driver.navigate().to("https://tractivity.breeding-np.ag/events/view?ids=133");
     }
 
-    @AfterClass(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void stop() {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
@@ -119,11 +118,12 @@ public class TestBase {
         }
     }
 
-    protected void deleteActivity() {
+    public void deleteActivity() {
         driver.findElement(By.xpath("(//button[@type='button'])[8]")).click();
     }
 
-    protected void selectActivity() {
+    public void selectActivity() {
         driver.findElement(By.xpath("//div[@id='1576540800000']/div/div[2]/table/tbody/tr/td[7]/button[2]/i")).click();
     }
 }
+
