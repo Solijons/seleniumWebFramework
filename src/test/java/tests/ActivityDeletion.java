@@ -6,10 +6,10 @@ public class ActivityDeletion extends TestBase {
 
     @Test
     public void testActivityDeletion() {
-        app.goToViewActivityPage();
-        app.selectActivity();
-        app.deleteActivity();
-        app.goBackToHome();
+        app.getNavigationHelper().goToViewActivityPage();
+        app.getActivityHelpers().selectActivity();
+        app.getActivityHelpers().deleteActivity();
+        app.getNavigationHelper().goBackToHome();
     }
 
 }

@@ -8,12 +8,12 @@ public class ActivityCreationTest extends TestBase {
     @Test
     public void testActivityCreation() throws Exception {
         // in case of error modal
-        app.goToAddActivityPage();
-        app.selectActivityType();
-        app.fillActivityForm(new ActivityData("2020-01-23", "This is my test comment", "Ok"));
-        app.submitActivityCreation();
-        app.closeModal();
-        app.goBackToHome();
+        app.getNavigationHelper().goToAddActivityPage();
+        app.getActivityHelpers().selectActivityType();
+        app.getActivityHelpers().fillActivityForm(new ActivityData("2020-01-23", "This is my test comment", "Ok"));
+        app.getActivityHelpers().submitActivityCreation();
+        app.getActivityHelpers().closeModal();
+        app.getNavigationHelper().goBackToHome();
     }
 
 }
