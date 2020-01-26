@@ -11,7 +11,7 @@ public class ActivityCreationTest extends TestBase {
         app.getNavigationHelper().goToAddActivityPage();
         app.getActivityHelpers().selectActivityType();
         app.getActivityHelpers().fillActivityForm(new ActivityData("2020-01-23", "This is my test comment", "Ok"));
-        app.getActivityHelpers().submitActivityCreation();
+        app.getActivityHelpers().submitActivity();
         app.getActivityHelpers().closeModal();
         app.getNavigationHelper().goBackToHome();
     }

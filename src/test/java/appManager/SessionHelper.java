@@ -3,20 +3,15 @@ package appManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SessionHelper {
-    private WebDriver driver;
+public class SessionHelper extends HelperBase {
 
     public SessionHelper(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void login(String username, String passowrd) {
-        driver.findElement(By.id("username")).click();
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys(username);
-        driver.findElement(By.id("password")).click();
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys(passowrd);
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        type(By.id("username"), username);
+        type(By.id("password"), passowrd);
+        click(By.xpath("//button[@type='submit']"));
     }
 }
