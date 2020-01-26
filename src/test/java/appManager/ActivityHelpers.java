@@ -15,8 +15,8 @@ public class ActivityHelpers extends HelperBase {
         click(By.id("ok"));
     }
 
-    public void submitActivityCreation() {
-        click(By.id("1579842872011"));
+    public void submitActivity() {
+        click(By.name("submitNFEEvent"));
     }
 
     public void fillActivityForm(ActivityData activityData) {
@@ -39,4 +39,9 @@ public class ActivityHelpers extends HelperBase {
     public void selectActivity() {
         click(By.xpath("//div[@id='1576540800000']/div/div[2]/table/tbody/tr/td[7]/button[2]/i"));
     }
+
+    public void initModificationActivity() {
+        click(By.xpath("//button[@id='1035']/i"));
+    }
+
 }
