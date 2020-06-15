@@ -1,5 +1,6 @@
 package appManager;
 
+import model.UserData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -12,22 +13,20 @@ public class ApplicationManager {
     protected WebDriver driver;
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
-    private ActivityHelpers activityHelpers;
+    private TestHelpers TestHelpers;
     private String baseUrl;
     private StringBuffer verificationErrors = new StringBuffer();
 
     public void init() {
         System.setProperty("webdriver.chrome.driver", "src/chromedriver");
         driver = new ChromeDriver();
-        activityHelpers = new ActivityHelpers(driver);
-        navigationHelper = new NavigationHelper(driver);
+        TestHelpers = new TestHelpers(driver);
         sessionHelper = new SessionHelper(driver);
 
-        baseUrl = "https://www.google.com/";
+        baseUrl = "https://www.yahoo.com/";
+        navigationHelper = new NavigationHelper(driver, baseUrl);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get("URL");
-
-        sessionHelper.login("username", "passowrd");
+        // sessionHelper.login(new UserData().withUsername("username").withPassword("password"));
     }
 
     public void stop() {
@@ -39,11 +38,11 @@ public class ApplicationManager {
     }
 
 
-    public ActivityHelpers getActivityHelpers() {
-        return activityHelpers;
+    public TestHelpers test() {
+        return TestHelpers;
     }
 
-    public NavigationHelper getNavigationHelper() {
+    public NavigationHelper goTo() {
         return navigationHelper;
     }
 }

@@ -1,5 +1,6 @@
 package appManager;
 
+import model.UserData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -9,9 +10,9 @@ public class SessionHelper extends HelperBase {
         super(driver);
     }
 
-    public void login(String username, String passowrd) {
-        type(By.id("username"), username);
-        type(By.id("password"), passowrd);
+    public void login(UserData data) {
+        type(By.id("username"), data.getUsername());
+        type(By.id("password"), data.getPassword());
         click(By.xpath("//button[@type='submit']"));
     }
 }
