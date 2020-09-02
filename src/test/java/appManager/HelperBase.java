@@ -1,13 +1,19 @@
 package appManager;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HelperBase {
     protected WebDriver driver;
+    protected WebDriverWait wait;
     private boolean acceptNextAlert = true;
 
     public HelperBase(WebDriver driver) {
         this.driver = driver;
+
+        if (wait == null) {
+            wait = new WebDriverWait(driver, 10);
+        }
     }
 
     protected void click(By locator) {
@@ -20,7 +26,7 @@ public class HelperBase {
         driver.findElement(locator).sendKeys(text);
     }
 
-    private boolean isElementPresent(By by) {
+    protected boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
             return true;
