@@ -22,7 +22,7 @@ public class ApplicationManager {
         contactHelpers = new ContactHelpers(driver);
         sessionHelper = new SessionHelper(driver);
 
-        baseUrl = "https://solijon-qa.oucampusdemo.com";
+        baseUrl = "https://solijon-qa.oucampusdemo.com/#!/";
         navigationHelper = new NavigationHelper(driver, baseUrl);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
