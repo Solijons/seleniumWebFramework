@@ -11,7 +11,7 @@ public class NavigationHelper extends HelperBase {
         this.UI_URL = baseUrl;
     }
 
-    public void yahooHomePage() {
+    public void homePage() {
         driver.get(UI_URL);
     }
 
