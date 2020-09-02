@@ -1,7 +1,6 @@
 # seleniumWebFramework
 Selenium Web Framework built in Java
 
-## How to use
 Prerequisites
 1. Java
 2. Git
