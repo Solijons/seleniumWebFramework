@@ -1,14 +1,14 @@
 # seleniumWebFramework
 Selenium Web Framework built in Java
 
-# How to use
+## How to use
 Prerequisites
 1. Java
 2. Git
 3. Terminal
 4. IntelliJ IDEA
 
-# How to run tests
+## How to run tests
 1. Open your terminal
 2. run command "git clone git@github.com:Solijons/seleniumWebFramework.git"
 3. run command "git checkout dev"
