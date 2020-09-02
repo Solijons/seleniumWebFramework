@@ -2,24 +2,17 @@ package appManager;
 import model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ContactHelpers extends HelperBase {
+    WebDriverWait wait = new WebDriverWait(driver, 5);
+
     public ContactHelpers(WebDriver driver) {
         super(driver);
     }
 
-    public void fullScreen() {
-        driver.manage().window().fullscreen();
-    }
-
     public void initContactCreation() {
         click(By.xpath("//button[@class='add-contact-btn float-btn']"));
-        wait.until(ExpectedConditions.visibilityOf(
-                driver.findElement(By.name("firstName")))
-        ).isDisplayed();
     }
 
     public void fillOutContactForm(ContactData contactData) {
@@ -33,11 +26,36 @@ public class ContactHelpers extends HelperBase {
         click(By.xpath("//button[@class='save-btn']"));
     }
 
-    public boolean isThereContact() {
-        return isElementPresent(By.xpath("//div[@class='empty-text']"));
+    public int allContactListSize() {
+        return driver.findElements(By.xpath("//div[@class='contact-name ng-binding']")).size();
     }
 
-    public void createSampleData() {
-        click(By.xpath("//span[contains(text(),'Create sample data?')]"));
+    public void hideSideBar() {
+        click(By.xpath("//div[@class='back-btn']"));
     }
+
+
+    public Boolean isSaveButtonDisabled() {
+        String prop = driver.findElement(By
+                .xpath("//button[@class='save-btn']"))
+                .getAttribute("disabled");
+
+        return Boolean.valueOf(prop);
+    }
+
+    public boolean isFirstNameErrorDisplayed() {
+        return isElementPresent(By.xpath("//div[contains(text(),'First name is required.')]"));
+    }
+
+    public boolean isPhoneErrorDisplayed() {
+        return isElementPresent(By.xpath("//div[contains(text(),'Wrong phone format.')]"));
+    }
+
+    public boolean isEmailErrorDisplayed() {
+        return isElementPresent(By.xpath("//div[contains(text(),'Wrong email format.')]"));
+    }
+
+
+
+
 }
