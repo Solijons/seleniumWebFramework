@@ -1,11 +1,11 @@
 package model;
 
-public class UserData {
+public class IAM {
     public String getUsername() {
         return username;
     }
 
-    public UserData withUsername(String username) {
+    public IAM withUsername(String username) {
         this.username = username;
         return this;
     }
@@ -14,7 +14,7 @@ public class UserData {
         return password;
     }
 
-    public UserData withPassword(String password) {
+    public IAM withPassword(String password) {
         this.password = password;
         return this;
     }
